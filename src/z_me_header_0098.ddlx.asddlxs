@@ -1,0 +1,39 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: { typeName: 'Order',
+                  typeNamePlural: 'Orders',
+                  title: { type: #STANDARD, value: 'HeaderId' } }
+
+@UI.presentationVariant: [ { sortOrder: [ { by: 'CreateOn', direction: #DESC } ],
+                             visualizations: [ { type: #AS_LINEITEM } ] } ]
+
+annotate entity ZCDS_C_HEADER_0098 with
+
+{
+  @UI.facet: [ { id: 'Header', type: #IDENTIFICATION_REFERENCE, label: 'Header Information', position: 10 },
+               { id: 'Item',   type: #LINEITEM_REFERENCE,       label: 'Item Information',   position: 20, targetElement: '_Items' } ]
+
+  @UI.hidden: true
+  HeaderUUID;
+
+  //  HeaderId;
+  //  ItemId;
+  //  Email;
+  //  FirstName;
+  //  LastName;
+  //  Country;
+  //  IsoDigitCode;
+  //  IsoLetterCode;
+  //  CreateOn;
+  //  DeliveryDate;
+  //  OrderStatus;
+  //  ImageUrl;
+  //  LocalCreatedBy;
+  //  LocalCreatedAt;
+  //  LocalLastChangedBy;
+  //  LocalLastChangedAt;
+  //  LastChangedAt;
+  //  /* Associations */
+  //  _Country;
+  //  _Items;
+}

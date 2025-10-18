@@ -34,6 +34,8 @@ define root view entity ZCDS_R_HEADER_0098
       local_last_changed_at as LocalLastChangedAt,
       @Semantics.user.lastChangedBy: true
       last_changed_at       as LastChangedAt,
+
+       /* Associations */
       _Country,
       _Items
 }

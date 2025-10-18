@@ -124,9 +124,9 @@ define view entity ZCDS_C_ITEM_0098
       LocalLastChangedBy,
       LocalLastChangedAt,
       LastChangedAt,
+
       /* Associations */
       _Header : redirected to parent ZCDS_C_HEADER_0098,
-
       _Currency,
       _UnitMeasure
 }

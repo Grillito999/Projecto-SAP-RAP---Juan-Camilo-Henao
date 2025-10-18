@@ -39,6 +39,7 @@ define view entity ZCDS_R_ITEM_0098
       @Semantics.systemDateTime.lastChangedAt: true
       last_changed_at       as LastChangedAt,
 
+      /* Associations */
       _Header,
       _Currency,
       _UnitMeasure

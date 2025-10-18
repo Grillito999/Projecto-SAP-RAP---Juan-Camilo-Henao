@@ -45,6 +45,5 @@ define view entity ZCDS_I_ITEMS_0098
       /* Associations */
       _Currency,
       _Header : redirected to parent ZCDS_I_HEADER_0098,
-
       _UnitMeasure
 }
