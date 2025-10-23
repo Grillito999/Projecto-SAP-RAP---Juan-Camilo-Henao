@@ -115,13 +115,6 @@ define root view entity ZCDS_C_HEADER_0098
 
       @Semantics.imageUrl: true
       ImageUrl,
-
-      LocalCreatedBy,
-      LocalCreatedAt,
-      LocalLastChangedBy,
-      LocalLastChangedAt,
-      LastChangedAt,
-
       /* Associations */
       _Items : redirected to composition child ZCDS_C_ITEM_0098,
       _Country

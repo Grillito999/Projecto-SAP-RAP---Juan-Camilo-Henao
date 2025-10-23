@@ -1,0 +1,62 @@
+@Metadata.layer: #CORE
+
+annotate entity ZCDS_C_ITEM_0098 with
+
+{
+  @UI.facet: [ { id: 'Item', type: #IDENTIFICATION_REFERENCE, label: 'Item', position: 10 } ]
+  @UI.hidden: true
+  ItemUUID;
+
+  @UI.hidden: true
+  HeaderUUID;
+
+  @UI.identification: [ { position: 10, label: 'Header ID' } ]
+  @UI.lineItem: [ { position: 10, importance: #HIGH, label: 'Item ID' },
+                  { type: #FOR_ACTION, dataAction: 'Discount', label: 'Discount' } ]
+  @UI.selectionField: [ { position: 10 } ]
+  ItemID;
+
+  @UI.identification: [ { position: 20, label: 'Name' } ]
+  @UI.lineItem: [ { position: 20, importance: #HIGH, label: 'Name' } ]
+  @UI.selectionField: [ { position: 20 } ]
+  Name;
+
+  @UI.identification: [ { position: 30, label: 'Description' } ]
+  @UI.lineItem: [ { position: 30, importance: #LOW, label: 'Description' } ]
+  Description;
+
+  @UI.identification: [ { position: 40, label: 'Release Date' } ]
+  @UI.lineItem: [ { position: 40, importance: #MEDIUM, label: 'Release Date' } ]
+  @UI.selectionField: [ { position: 30 } ]
+  ReleaseDate;
+
+  @UI.identification: [ { position: 50, label: 'Discontinue Date' } ]
+  @UI.lineItem: [ { position: 50, importance: #LOW, label: 'Discontinue Date' } ]
+  DiscontinueDate;
+
+  @UI.identification: [ { position: 60, label: 'Price' } ]
+  @UI.lineItem: [ { position: 60, importance: #HIGH, label: 'Price' } ]
+  @UI.selectionField: [ { position: 40 } ]
+  Price;
+
+  @UI.identification: [ { position: 70, label: 'Currency' } ]
+  @UI.lineItem: [ { position: 70, importance: #HIGH, label: 'Currency' } ]
+  @UI.selectionField: [ { position: 50 } ]
+  Currency;
+
+  @UI.identification: [ { position: 80, label: 'Height' } ]
+  @UI.lineItem: [ { position: 80, importance: #LOW, label: 'Height' } ]
+  Height;
+
+  @UI.identification: [ { position: 90, label: 'Width' } ]
+  @UI.lineItem: [ { position: 90, importance: #LOW, label: 'Width' } ]
+  Width;
+
+  @UI.identification: [ { position: 100, label: 'Depth' } ]
+  @UI.lineItem: [ { position: 100, importance: #LOW, label: 'Depth' } ]
+  Depth;
+
+  @UI.identification: [ { position: 110, label: 'Quantity' } ]
+  @UI.lineItem: [ { position: 110, importance: #HIGH, label: 'Quantity' } ]
+  Quantity;
+}

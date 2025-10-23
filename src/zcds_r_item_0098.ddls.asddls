@@ -1,6 +1,9 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Root Item- 0098'
 @Metadata.ignorePropagatedAnnotations: true
+
+@Metadata.allowExtensions: true
+
 define view entity ZCDS_R_ITEM_0098
   as select from zitem_0098
   association        to parent ZCDS_R_HEADER_0098 as _Header      on $projection.HeaderUUID = _Header.HeaderUUID

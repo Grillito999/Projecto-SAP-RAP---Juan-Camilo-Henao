@@ -2,7 +2,6 @@ managed;
 strict ( 2 );
 with draft;
 
-
 define behavior for ZCDS_R_HEADER_0098 alias Header
 implementation in class zbp_r_header_0098 unique
 draft table zheader_0098_d
@@ -29,7 +28,6 @@ etag master LocalLastChangedAt
   action ( features : instance, authorization : update ) ApproveOrder result [1] $self;
   action ( features : instance, authorization : update ) RejectOrder result [1] $self;
 
-
   validation ValidateEmail on save { create; update; }
   validation ValidateName on save { create; update; field FirstName, LastName; }
   validation ValidateDeliveryDate on save { create; update; field DeliveryDate; }
@@ -52,7 +50,6 @@ etag master LocalLastChangedAt
     determine action ValidateDeliveryDates executed on field DeliveryDate affects messages;
     determine action ValidateCountrys executed on field Country affects messages;
     determine action ValidateOrderStatuss executed on field OrderStatus affects messages;
-
   }
 
   draft action Activate optimized;
@@ -62,7 +59,6 @@ etag master LocalLastChangedAt
 
   draft determine action Prepare
   {
-
     validation ValidateEmail;
     validation ValidateName;
     validation ValidateDeliveryDate;
@@ -71,7 +67,6 @@ etag master LocalLastChangedAt
     validation Item~ValidatePrice;
     validation Item~validateCurrency;
     validation Item~ValidateQuantity;
-
   }
 
   mapping for zheader_0098
@@ -95,8 +90,6 @@ etag master LocalLastChangedAt
     }
 
 }
-
-
 
 define behavior for ZCDS_R_ITEM_0098 alias Item
 implementation in class zbp_r_item_0098 unique
@@ -157,6 +150,5 @@ etag master LocalLastChangedAt
       LocalLastChangedAt = local_last_changed_at;
       LastChangedAt      = last_changed_at;
     }
-
 
 }

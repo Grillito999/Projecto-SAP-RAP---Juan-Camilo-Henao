@@ -35,9 +35,7 @@ define view entity ZCDS_C_ITEM_0098
       Name,
 
       @Consumption.valueHelpDefinition: [ { entity: { name: 'ZCDS_R_ITEM_0098', element: 'Description' },
-                                            additionalBinding: [ { localElement: 'Height',
-                                                                   element: 'Height',
-                                                                   usage: #RESULT },
+                                            additionalBinding: [ { element: 'Height', usage: #RESULT },
                                                                  { localElement: 'Width',
                                                                    element: 'Width',
                                                                    usage: #RESULT },
@@ -62,31 +60,24 @@ define view entity ZCDS_C_ITEM_0098
                                             useForValidation: true } ]
       DiscontinueDate,
 
-      @Consumption.valueHelpDefinition: [ { entity: { name: 'I_Currency', element: 'Currency' },
-                                            additionalBinding: [ { localElement: 'CurrencyName',
-                                                                   element: 'CurrencyName',
-                                                                   usage: #RESULT } ],
+      @Consumption.valueHelpDefinition: [ { entity: { name: 'ZCDS_R_ITEM_0098', element: 'Price' },
+                                            additionalBinding: [ { localElement: 'Currency',
+                                                                   element: 'Currency',
+                                                                   usage: #RESULT },
+                                                                 { element: 'CurrencyName', usage: #RESULT } ],
                                             useForValidation: true } ]
 
       _Currency._Text.CurrencyName       as CurrencyName : localized,
 
       @Semantics.amount.currencyCode: 'Currency'
-
-
       Price,
 
-      @Consumption.valueHelpDefinition: [ { entity: { name: 'I_Currency', element: 'Currency' },
-                                            additionalBinding: [ { localElement: 'CurrencyName',
-                                                                   element: 'CurrencyName',
-                                                                   usage: #RESULT } ],
+      @Consumption.valueHelpDefinition: [ { entity: { name: 'ZCDS_R_ITEM_0098', element: 'Currency' },
+                                            additionalBinding: [ { element: 'CurrencyName', usage: #RESULT } ],
                                             useForValidation: true } ]
-
       Currency,
 
-      @Consumption.valueHelpDefinition: [ { entity: { name: 'I_UnitOfMeasureStdVH', element: 'UnitOfMeasure' },
-                                            additionalBinding: [ { localElement: 'UnitOfMeasureLongName',
-                                                                   element: 'UnitOfMeasureLongName',
-                                                                   usage: #RESULT } ],
+      @Consumption.valueHelpDefinition: [ { entity: { name: 'ZCDS_R_ITEM_0098', element: 'Height' },
                                             useForValidation: true } ]
       @Semantics.quantity.unitOfMeasure: 'UnitOfMeasure'
       Height,
@@ -107,6 +98,8 @@ define view entity ZCDS_C_ITEM_0098
       @Semantics.quantity.unitOfMeasure: 'UnitOfMeasure'
       Depth,
 
+      @Consumption.valueHelpDefinition: [ { entity: { name: 'ZCDS_R_ITEM_0098', element: 'Quantity' },
+                                            useForValidation: true } ]
       Quantity,
 
       @Consumption.valueHelpDefinition: [ { entity: { name: 'I_UnitOfMeasureStdVH', element: 'UnitOfMeasure' },
@@ -119,14 +112,9 @@ define view entity ZCDS_C_ITEM_0098
 
       UnitOfMeasure,
 
-      LocalCreatedBy,
-      LocalCreatedAt,
-      LocalLastChangedBy,
-      LocalLastChangedAt,
-      LastChangedAt,
-
       /* Associations */
       _Header : redirected to parent ZCDS_C_HEADER_0098,
+
       _Currency,
       _UnitMeasure
 }

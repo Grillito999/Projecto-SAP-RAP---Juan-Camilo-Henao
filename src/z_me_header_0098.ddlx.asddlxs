@@ -10,30 +10,67 @@
 annotate entity ZCDS_C_HEADER_0098 with
 
 {
-  @UI.facet: [ { id: 'Header', type: #IDENTIFICATION_REFERENCE, label: 'Header Information', position: 10 },
-               { id: 'Item',   type: #LINEITEM_REFERENCE,       label: 'Item Information',   position: 20, targetElement: '_Items' } ]
-
+  @UI.facet: [ { id: 'Header',
+                 type: #IDENTIFICATION_REFERENCE,
+                 label: 'Header Information',
+                 position: 10 },
+               { id: 'Item',
+                 type: #LINEITEM_REFERENCE,
+                 label: 'Item',
+                 position: 20,
+                 targetElement: '_Items' } ]
   @UI.hidden: true
   HeaderUUID;
 
-  //  HeaderId;
-  //  ItemId;
-  //  Email;
-  //  FirstName;
-  //  LastName;
-  //  Country;
-  //  IsoDigitCode;
-  //  IsoLetterCode;
-  //  CreateOn;
-  //  DeliveryDate;
-  //  OrderStatus;
-  //  ImageUrl;
-  //  LocalCreatedBy;
-  //  LocalCreatedAt;
-  //  LocalLastChangedBy;
-  //  LocalLastChangedAt;
-  //  LastChangedAt;
-  //  /* Associations */
-  //  _Country;
-  //  _Items;
+  @UI.identification: [ { position: 10, label: 'Header ID' },
+                        { type: #FOR_ACTION, dataAction: 'ApproveOrder', label: 'Aprove Order' },
+                        { type: #FOR_ACTION, dataAction: 'RejectOrder', label: 'Reject Order' } ]
+  @UI.lineItem: [ { position: 10, importance: #HIGH, label: 'Header ID' },
+                  { type: #FOR_ACTION, dataAction: 'ApproveOrder', label: 'Aprove Order' },
+                  { type: #FOR_ACTION, dataAction: 'RejectOrder', label: 'Reject Order' } ]
+  @UI.selectionField: [ { position: 10 } ]
+
+  HeaderId;
+
+  @UI.identification: [ { position: 20, label: 'Header ID' } ]
+  @UI.lineItem: [ { position: 20, importance: #HIGH, label: 'Item ID' } ]
+  @UI.selectionField: [ { position: 20 } ]
+  ItemId;
+
+  @UI.identification: [ { position: 30, label: 'Email' } ]
+  @UI.lineItem: [ { position: 30, importance: #MEDIUM, label: 'Email' } ]
+  @UI.selectionField: [ { position: 30 } ]
+  Email;
+
+  @UI.identification: [ { position: 40, label: 'First Name' } ]
+  @UI.lineItem: [ { position: 40, importance: #MEDIUM, label: 'First Name' } ]
+  FirstName;
+
+  @UI.identification: [ { position: 50, label: 'Last Name' } ]
+  @UI.lineItem: [ { position: 50, importance: #MEDIUM, label: 'Last Name' } ]
+  LastName;
+
+  @UI.identification: [ { position: 60, label: 'Country' } ]
+  @UI.lineItem: [ { position: 60, importance: #LOW, label: 'Country' } ]
+  @UI.selectionField: [ { position: 40 } ]
+  Country;
+
+  @UI.identification: [ { position: 70, label: 'Create On' } ]
+  @UI.lineItem: [ { position: 70, importance: #HIGH, label: 'Create On' } ]
+  @UI.selectionField: [ { position: 50 } ]
+  CreateOn;
+
+  @UI.identification: [ { position: 80, label: 'Delivery Date' } ]
+  @UI.lineItem: [ { position: 80, importance: #HIGH, label: 'Delivery Date' } ]
+  @UI.selectionField: [ { position: 60 } ]
+  DeliveryDate;
+
+  @UI.identification: [ { position: 90, label: 'Status Order' } ]
+  @UI.lineItem: [ { position: 90, importance: #HIGH, label: 'Status Order' } ]
+  @UI.selectionField: [ { position: 70 } ]
+  OrderStatus;
+
+  @UI.identification: [ { position: 100, label: 'Image Url' } ]
+  @UI.lineItem: [ { position: 100, importance: #HIGH, label: 'Image Url' } ]
+  ImageUrl;
 }

@@ -1,0 +1,5 @@
+@EndUserText.label: 'Sales Ordes Service Definition 0098'
+define service ZSB_HEADER_0098 {
+  expose ZCDS_R_HEADER_0098 as Header;
+  expose ZCDS_R_ITEM_0098   as Item;
+}
