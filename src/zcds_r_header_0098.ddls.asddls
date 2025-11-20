@@ -3,9 +3,11 @@
 @Metadata.ignorePropagatedAnnotations: true
 define root view entity ZCDS_R_HEADER_0098
   as select from zheader_0098
-  composition [0..*] of ZCDS_R_ITEM_0098 as _Items
-  association [0..1] to I_CountryVH      as _Country on  $projection.Country = _Country.Description
-                                                     and _Country.Country    = _Country.Country
+  composition [0..*] of ZCDS_R_ITEM_0098        as _Items
+  association [0..1] to I_CountryVH             as _Country     on  $projection.Country = _Country.Description
+                                                                and _Country.Country    = _Country.Country
+  association [0..1] to ZCDS_OrderStatusVH_0098 as _orderStatus on  $projection.OrderStatus = _orderStatus.Orderstatus
+
 
 {
   key id                    as HeaderUUID,
@@ -35,7 +37,8 @@ define root view entity ZCDS_R_HEADER_0098
       @Semantics.user.lastChangedBy: true
       last_changed_at       as LastChangedAt,
 
-       /* Associations */
+      /* Associations */
       _Country,
+      _orderStatus,
       _Items
 }
