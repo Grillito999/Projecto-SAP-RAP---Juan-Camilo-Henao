@@ -10,10 +10,7 @@
 annotate entity ZCDS_C_HEADER_0098 with
 
 {
-  @UI.facet: [ { id: 'Header',
-                 type: #IDENTIFICATION_REFERENCE,
-                 label: 'Header',
-                 position: 10 },
+  @UI.facet: [ { id: 'Header', type: #IDENTIFICATION_REFERENCE, label: 'Header', position: 10 },
                { id: 'Item',
                  type: #LINEITEM_REFERENCE,
                  label: 'Item',
@@ -25,11 +22,9 @@ annotate entity ZCDS_C_HEADER_0098 with
   @UI.identification: [ { position: 10, label: 'Header ID' },
                         { type: #FOR_ACTION, dataAction: 'ApproveOrder', label: 'Aprove Order' },
                         { type: #FOR_ACTION, dataAction: 'RejectOrder', label: 'Reject Order' } ]
-
   @UI.lineItem: [ { position: 10, importance: #HIGH, label: 'Header ID' },
                   { type: #FOR_ACTION, dataAction: 'ApproveOrder', label: 'Aprove Order' },
                   { type: #FOR_ACTION, dataAction: 'RejectOrder', label: 'Reject Order' } ]
-
   @UI.selectionField: [ { position: 10 } ]
   HeaderId;
 
@@ -67,17 +62,18 @@ annotate entity ZCDS_C_HEADER_0098 with
   DeliveryDate;
 
   @UI.identification: [ { position: 90, label: 'Status Order' } ]
-  @UI.lineItem: [ { position: 90, importance: #HIGH, label: 'Status Order', criticality: 'OrderStatus', criticalityRepresentation: #WITH_ICON } ]
+  @UI.lineItem: [ { position: 90,
+                    importance: #HIGH,
+                    label: 'Status Order',
+                    criticality: 'OrderStatus',
+                    criticalityRepresentation: #WITH_ICON } ]
   @UI.selectionField: [ { position: 70 } ]
   OrderStatus;
 
   @UI.identification: [ { position: 100, label: 'Image Url' } ]
   @UI.lineItem: [ { position: 100, importance: #LOW, label: 'Image Url' } ]
   ImageUrl;
+
   @UI.hidden: true
   DescriptionStatus;
-  @UI.hidden: true
-  IsoDigitCode;
-  @UI.hidden: true
-  IsoLetterCode;
 }

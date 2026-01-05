@@ -67,48 +67,32 @@ define root view entity ZCDS_C_HEADER_0098
       @Semantics.name.suffix: true
       LastName,
 
-      @Consumption.valueHelpDefinition: [ { entity: { name: 'I_CountryVH', element: 'Country' },
-                                            additionalBinding: [ { localElement: 'IsoDigitCode',
-                                                                   element: 'CountryThreeDigitISOCode',
-                                                                   usage: #FILTER_AND_RESULT },
-                                                                 { localElement: 'IsoLetterCode',
-                                                                   element: 'CountryThreeLetterISOCode',
-                                                                   usage: #FILTER_AND_RESULT } ],
-                                            useForValidation: true } ]
+      @Consumption.valueHelpDefinition: [ { entity: { name: 'I_CountryVH', element: 'Country' } } ]
+      //                                      additionalBinding: [ { localElement: 'IsoDigitCode',
+      //                                                              element: 'CountryThreeDigitISOCode',
+      //                                                              usage: #FILTER },
+      //                                                            { localElement: 'IsoLetterCode',
+      //                                                              element: 'CountryThreeLetterISOCode',
+      //                                                             usage: #FILTER } ],
+      //                                                             useForValidation: true} ]
       @Semantics.address.country: true
       Country,
 
-      _Country.CountryThreeDigitISOCode  as IsoDigitCode,
-      _Country.CountryThreeLetterISOCode as IsoLetterCode,
+      //    _Country.CountryThreeDigitISOCode  as IsoDigitCode,
+      //     _Country.CountryThreeLetterISOCode as IsoLetterCode,
 
-      //      @Consumption.valueHelpDefinition: [ { entity: { name: 'ZCDS_R_HEADER_0098', element: 'CreateOn' },
-      //                                            additionalBinding: [ { localElement: 'DeliveryDate',
-      //                                                                   element: 'DeliveryDate',
-      //                                                                   usage: #RESULT },
-      //                                                                 { localElement: 'OrderStatus',
-      //                                                                   element: 'OrderStatus',
-      //                                                                   usage: #RESULT } ],
-      //                                            useForValidation: true } ]
+
       CreateOn,
 
-      //      @Consumption.valueHelpDefinition: [ { entity: { name: 'ZCDS_R_HEADER_0098', element: 'DeliveryDate'},
-      //                                            additionalBinding: [ { localElement: 'CreateOn',
-      //                                                                   element: 'CreateOn',
-      //                                                                   usage: #RESULT },
-      //                                                                 { localElement: 'OrderStatus',
-      //                                                                   element: 'OrderStatus',
-      //                                                                   usage: #RESULT } ],
-      //                                            useForValidation: true } ]
       DeliveryDate,
 
       @Consumption.valueHelpDefinition: [ { entity: { name: 'ZCDS_OrderStatusVH_0098', element: 'Orderstatus' },
                                             additionalBinding: [ { localElement: 'DescriptionStatus',
                                                                    element: 'Description',
                                                                    usage: #RESULT } ] } ]
-
       OrderStatus,
 
-      _orderStatus.Description           as DescriptionStatus,
+      _orderStatus.Description as DescriptionStatus,
 
       // @Semantics.imageUrl: true
       ImageUrl,

@@ -44,6 +44,7 @@ CLASS lhc_Item IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD get_global_authorizations.
+
   ENDMETHOD.
 
   METHOD precheck_update.

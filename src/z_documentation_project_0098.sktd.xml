@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SKTD" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <KTD_OBJECT>
+    <NAME>Z_DOCUMENTATION_PROJECT_0098</NAME>
+    <TYPE>GENERAL_TEXT</TYPE>
+    <SOURCE_CONTENT_TYPE>02</SOURCE_CONTENT_TYPE>
+    <REF_OBJ_TYPE>DEVC</REF_OBJ_TYPE>
+    <REF_OBJ_NAME>Z_PROJECT_RAP_JCHG_0098</REF_OBJ_NAME>
+    <ABAP_LANGUAGE_VERSION>X</ABAP_LANGUAGE_VERSION>
+    <CONTENT>
+     <item>
+      <NAME>Z_DOCUMENTATION_PROJECT_0098</NAME>
+      <LANGU>E</LANGU>
+      <COMPONENT_UUID>TrIf2rHnH+C6uuVdAD24QQ==</COMPONENT_UUID>
+      <SOURCE_CONTENT>QSBTQVAgRklPUkkgRWxlbWVudHMgTGlzdCBSZXBvcnQgYXBwbGljYXRpb24gZGVzaWduZWQgZm9y
+IG1hbmFnaW5nIHNhbGVzIG9yZGVycy4gQnVpbHQgb24gU0FQIFMvNEhBTkEgQ2xvdWQgdXNpbmcg
+dGhlIFJFU1RmdWwgQXBwbGljYXRpb24gUHJvZ3JhbW1pbmcgTW9kZWwgKFJBUCkgYW5kIGNvbnN1
+bWluZyBPRGF0YSB2NCBzZXJ2aWNlcy4=</SOURCE_CONTENT>
+     </item>
+    </CONTENT>
+   </KTD_OBJECT>
+  </asx:values>
+ </asx:abap>
+</abapGit>

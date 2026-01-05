@@ -12,8 +12,8 @@ define behavior for ZCDS_I_HEADER_0098 alias Header
   use action ValidateMail;
   use action ValidateNames;
   use action ValidateDeliveryDates;
-  use action ValidateCountrys;
-  use action ValidateOrderStatuss;
+ // use action ValidateCountrys;
+ // use action ValidateOrderStatuss;
 
   use action Activate;
   use action Edit;
