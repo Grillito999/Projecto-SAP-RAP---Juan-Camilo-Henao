@@ -81,6 +81,67 @@ CLASS lhc_Header IMPLEMENTATION.
 
   METHOD get_instance_authorizations.
 
+    DATA Header TYPE SORTED TABLE OF zcds_r_header_0098 WITH UNIQUE KEY HeaderUUID.
+
+    DATA(lv_technical_name) = cl_abap_context_info=>get_user_technical_name( ).
+    DATA lv_auth_update TYPE abap_boolean.
+    DATA lv_auth_delete TYPE abap_boolean.
+
+    CONSTANTS C_header TYPE n LENGTH 1 VALUE 1.
+
+    READ ENTITIES OF zcds_r_header_0098 IN LOCAL MODE
+         ENTITY Header
+         FIELDS ( HeaderId ) WITH CORRESPONDING #( keys )
+         RESULT DATA(Headers).
+
+    Header = CORRESPONDING #( Headers DISCARDING DUPLICATES MAPPING HeaderUUID = HeaderUUID HeaderId = HeaderId EXCEPT * ).
+
+    LOOP AT Headers ASSIGNING FIELD-SYMBOL(<fs_header>).
+
+      IF line_exists( Header[ HeaderUUID = <fs_header>-HeaderUUID
+                              HeaderId   = <fs_header>-HeaderId ] ) AND lv_technical_name = 'CB9980002241'. "" AND <fs_header>-HeaderId = C_header.
+
+        IF requested_authorizations-%update = if_abap_behv=>mk-on OR requested_authorizations-%action-Edit = if_abap_behv=>mk-on AND requested_authorizations-%delete = if_abap_behv=>mk-on.
+
+          lv_auth_delete = abap_true.
+          lv_auth_update = abap_true.
+
+        ELSEIF requested_authorizations-%update = if_abap_behv=>mk-on OR requested_authorizations-%action-Edit = if_abap_behv=>mk-on.
+
+          lv_auth_update = abap_true.
+
+        ELSEIF requested_authorizations-%delete = if_abap_behv=>mk-on.
+
+          lv_auth_delete = abap_true.
+
+        ELSE.
+
+          APPEND VALUE #( %tky = <fs_header>-%tky ) TO failed-header. " FAILED es para que SAP identifique el error, unicamente se le pasa la llave "
+          APPEND VALUE #(
+              %tky              = <fs_header>-%tky
+*                        %state_area       = 'INSTANCE_AUTH'
+              %element-HeaderId = if_abap_behv=>mk-on
+              %msg              = NEW zcm_sale_order_0098( textid   = zcm_sale_order_0098=>not_authorized
+                                                           severity = if_abap_behv_message=>severity-error ) ) TO reported-header. " REPORTED es para que el USUARIO vea el error, tiene distintos parametros.
+
+        ENDIF.
+
+      ENDIF.
+
+      APPEND VALUE #( LET auth_update = COND #( WHEN lv_auth_update = abap_true
+                                                THEN if_abap_behv=>auth-allowed
+                                                ELSE if_abap_behv=>auth-unauthorized )
+
+                          auth_delete = COND #( WHEN lv_auth_delete = abap_true
+                                                THEN if_abap_behv=>auth-allowed
+                                                ELSE if_abap_behv=>auth-unauthorized ) IN
+                      %tky         = <fs_header>-%tky
+                      %update      = auth_update
+                      %action-edit = auth_update
+                      %delete      = auth_delete ) TO result.
+
+    ENDLOOP.
+
   ENDMETHOD.
 
   METHOD get_global_authorizations.
@@ -97,8 +158,9 @@ CLASS lhc_Header IMPLEMENTATION.
 
         result-%create = if_abap_behv=>auth-unauthorized.
 
-        APPEND VALUE #( %msg = NEW zcm_sale_order_0098( textid   = zcm_sale_order_0098=>not_authorized
-                                                        severity = if_abap_behv_message=>severity-error ) ) TO reported-header.
+        APPEND VALUE #( %msg    = NEW zcm_sale_order_0098( textid   = zcm_sale_order_0098=>not_authorized
+                                                           severity = if_abap_behv_message=>severity-error )
+                        %global = if_abap_behv=>mk-on    ) TO reported-header.
 
       ENDIF.
 
@@ -114,28 +176,31 @@ CLASS lhc_Header IMPLEMENTATION.
         result-%update      = if_abap_behv=>auth-unauthorized.
         result-%action-Edit = if_abap_behv=>auth-unauthorized.
 
-        APPEND VALUE #( %msg = NEW zcm_sale_order_0098( textid   = zcm_sale_order_0098=>not_authorized
-                                                        severity = if_abap_behv_message=>severity-error ) ) TO reported-header.
+        APPEND VALUE #( %msg    = NEW zcm_sale_order_0098( textid   = zcm_sale_order_0098=>not_authorized
+                                                           severity = if_abap_behv_message=>severity-error )
+                        %global = if_abap_behv=>mk-on                                 ) TO reported-header.
 
       ENDIF.
 
     ELSEIF requested_authorizations-%delete = if_abap_behv=>mk-on.
 
-      lv_technical_name = 'sdas'.
-
       IF lv_technical_name = 'CB9980002241'.
 
-        result-%delete      = if_abap_behv=>auth-allowed.
+        result-%delete = if_abap_behv=>auth-allowed.
+
+        APPEND VALUE #( %msg    = NEW zcm_sale_order_0098( textid   = zcm_sale_order_0098=>not_authorized
+                                                           severity = if_abap_behv_message=>severity-error )
+                        %global = if_abap_behv=>mk-on                                 ) TO reported-header.
 
       ELSE.
 
-        result-%delete      = if_abap_behv=>auth-unauthorized.
+        result-%delete = if_abap_behv=>auth-unauthorized.
 
-        APPEND VALUE #( %msg = NEW zcm_sale_order_0098( textid   = zcm_sale_order_0098=>not_authorized
-                                                        severity = if_abap_behv_message=>severity-error ) ) TO reported-header.
+        APPEND VALUE #( %msg    = NEW zcm_sale_order_0098( textid   = zcm_sale_order_0098=>not_authorized
+                                                           severity = if_abap_behv_message=>severity-error )
+                        %global = if_abap_behv=>mk-on                                 ) TO reported-header.
 
       ENDIF.
-
 
     ELSE.
 
@@ -343,7 +408,6 @@ CLASS lhc_Header IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD ValidateName.
-
     DATA Names TYPE SORTED TABLE OF zcds_r_header_0098 WITH UNIQUE KEY HeaderUUID.
 
     CONSTANTS C_Numbers TYPE n LENGTH 10 VALUE '0123456789'.
@@ -382,7 +446,7 @@ CLASS lhc_Header IMPLEMENTATION.
 
       ELSE.
 
-        RETURN.
+        EXIT.
 
       ENDIF.
 

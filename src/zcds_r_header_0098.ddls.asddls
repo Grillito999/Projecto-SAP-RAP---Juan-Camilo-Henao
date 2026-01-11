@@ -1,4 +1,4 @@
-@AccessControl.authorizationCheck: #NOT_REQUIRED
+@AccessControl.authorizationCheck: #NOT_REQUIRED // Sirve para restringir la autorizacón de la lectura de los datos (crear objeto access control).
 @EndUserText.label: 'Root header - 0098'
 @Metadata.ignorePropagatedAnnotations: true
 define root view entity ZCDS_R_HEADER_0098

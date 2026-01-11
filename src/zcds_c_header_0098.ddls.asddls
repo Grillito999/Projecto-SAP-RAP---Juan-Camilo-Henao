@@ -12,6 +12,7 @@ define root view entity ZCDS_C_HEADER_0098
   as projection on ZCDS_R_HEADER_0098
 
 {
+
   key HeaderUUID,
 
       @Consumption.valueHelpDefinition: [ { entity: { name: 'ZCDS_R_HEADER_0098', element: 'HeaderId' },
@@ -25,17 +26,6 @@ define root view entity ZCDS_C_HEADER_0098
       @Search.defaultSearchElement: true
       HeaderId,
 
-      //      @Consumption.valueHelpDefinition: [ { entity: { name: 'ZCDS_R_HEADER_0098', element: 'ItemId'},
-      //                                            additionalBinding: [ { localElement: 'HeaderId',
-      //                                                                   element: 'HeaderId',
-      //                                                                   usage: #RESULT },
-      //                                                                 { localElement: 'Email',
-      //                                                                   element: 'Email',
-      //                                                                   usage: #FILTER } ],
-      //                                            useForValidation: true } ]
-      //      @Search.defaultSearchElement: true
-      //      ItemId,
-
       @Consumption.valueHelpDefinition: [ { entity: { name: 'ZCDS_R_HEADER_0098', element: 'Email' },
                                             additionalBinding: [ { localElement: 'FirstName',
                                                                    element: 'FirstName',
@@ -43,7 +33,6 @@ define root view entity ZCDS_C_HEADER_0098
                                                                  { localElement: 'LastName',
                                                                    element: 'LastName',
                                                                    usage: #RESULT } ] } ]
-      //    useForValidation: true } ]
       @Semantics.eMail.address: true
       Email,
 
@@ -68,19 +57,8 @@ define root view entity ZCDS_C_HEADER_0098
       LastName,
 
       @Consumption.valueHelpDefinition: [ { entity: { name: 'I_CountryVH', element: 'Country' } } ]
-      //                                      additionalBinding: [ { localElement: 'IsoDigitCode',
-      //                                                              element: 'CountryThreeDigitISOCode',
-      //                                                              usage: #FILTER },
-      //                                                            { localElement: 'IsoLetterCode',
-      //                                                              element: 'CountryThreeLetterISOCode',
-      //                                                             usage: #FILTER } ],
-      //                                                             useForValidation: true} ]
       @Semantics.address.country: true
       Country,
-
-      //    _Country.CountryThreeDigitISOCode  as IsoDigitCode,
-      //     _Country.CountryThreeLetterISOCode as IsoLetterCode,
-
 
       CreateOn,
 
@@ -94,8 +72,8 @@ define root view entity ZCDS_C_HEADER_0098
 
       _orderStatus.Description as DescriptionStatus,
 
-      // @Semantics.imageUrl: true
       ImageUrl,
+
       /* Associations */
       _Items : redirected to composition child ZCDS_C_ITEM_0098,
 

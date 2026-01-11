@@ -25,39 +25,26 @@ define view entity ZCDS_C_ITEM_0098
 
       ItemID,
 
-      //      @Consumption.valueHelpDefinition: [ { entity: { name: 'ZCDS_R_ITEM_0098', element: 'Name' },
-      //                                            additionalBinding: [ { localElement: 'Description',
-      //                                                                   element: 'Description',
-      //                                                                   usage: #RESULT } ],
-      //                                            useForValidation: true } ]
-      //      @Search.defaultSearchElement: true
-      //      @Semantics.name.fullName: true
+      @Consumption.valueHelpDefinition: [ { entity: { name: 'ZCDS_R_ITEM_0098', element: 'Name' },
+                                            additionalBinding: [ { localElement: 'Description',
+                                                                   element: 'Description',
+                                                                   usage: #RESULT } ] } ]
+      @Semantics.name.fullName: true
       Name,
 
-      //      @Consumption.valueHelpDefinition: [ { entity: { name: 'ZCDS_R_ITEM_0098', element: 'Description' },
-      //                                            additionalBinding: [ { element: 'Height', usage: #RESULT },
-      //                                                                 { localElement: 'Width',
-      //                                                                   element: 'Width',
-      //                                                                   usage: #RESULT },
-      //                                                                 { localElement: 'Depth',
-      //                                                                   element: 'Depth',
-      //                                                                   usage: #RESULT } ],
-      //                                            useForValidation: true } ]
-      //      @Semantics.text: true
+      @Consumption.valueHelpDefinition: [ { entity: { name: 'ZCDS_R_ITEM_0098', element: 'Description' },
+                                            additionalBinding: [ { element: 'Height', usage: #RESULT },
+                                                                 { localElement: 'Width',
+                                                                   element: 'Width',
+                                                                   usage: #RESULT },
+                                                                 { localElement: 'Depth',
+                                                                   element: 'Depth',
+                                                                   usage: #RESULT } ] } ]
+      @Semantics.text: true
       Description,
 
-      //      @Consumption.valueHelpDefinition: [ { entity: { name: 'ZCDS_R_ITEM_0098', element: 'ReleaseDate' },
-      //                                            additionalBinding: [ { localElement: 'DiscontinueDate',
-      //                                                                   element: 'DiscontinueDate',
-      //                                                                   usage: #RESULT } ],
-      //                                            useForValidation: true } ]
       ReleaseDate,
 
-      //      @Consumption.valueHelpDefinition: [ { entity: { name: 'ZCDS_R_ITEM_0098', element: 'DiscontinueDate' },
-      //                                            additionalBinding: [ { localElement: 'ReleaseDate',
-      //                                                                   element: 'ReleaseDate',
-      //                                                                   usage: #RESULT } ],
-      //                                            useForValidation: true } ]
       DiscontinueDate,
 
       _Currency._Text.CurrencyName       as CurrencyName : localized,
@@ -77,29 +64,16 @@ define view entity ZCDS_C_ITEM_0098
                                             useForValidation: true } ]
       Currency,
 
-      //      @Consumption.valueHelpDefinition: [ { entity: { name: 'ZCDS_R_ITEM_0098', element: 'Height' },
-      //                                            useForValidation: true } ]
+
       @Semantics.quantity.unitOfMeasure: 'UnitOfMeasure'
       Height,
 
-      //      @Consumption.valueHelpDefinition: [ { entity: { name: 'I_UnitOfMeasureStdVH', element: 'UnitOfMeasure' },
-      //                                            additionalBinding: [ { localElement: 'UnitOfMeasureLongName',
-      //                                                                   element: 'UnitOfMeasureLongName',
-      //                                                                   usage: #RESULT } ],
-      //                                            useForValidation: true } ]
       @Semantics.quantity.unitOfMeasure: 'UnitOfMeasure'
       Width,
 
-      //      @Consumption.valueHelpDefinition: [ { entity: { name: 'I_UnitOfMeasureStdVH', element: 'UnitOfMeasure' },
-      //                                            additionalBinding: [ { localElement: 'UnitOfMeasureLongName',
-      //                                                                   element: 'UnitOfMeasureLongName',
-      //                                                                   usage: #RESULT } ],
-      //                                            useForValidation: true } ]
       @Semantics.quantity.unitOfMeasure: 'UnitOfMeasure'
       Depth,
 
-      //      @Consumption.valueHelpDefinition: [ { entity: { name: 'ZCDS_R_ITEM_0098', element: 'Quantity' },
-      //                                            useForValidation: true } ]
       Quantity,
 
       _UnitMeasure.UnitOfMeasureLongName as UnitOfMeasureLongName,

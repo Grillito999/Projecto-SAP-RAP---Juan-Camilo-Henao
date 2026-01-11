@@ -31,14 +31,10 @@
       validation ValidateEmail on save { create; update; }
       validation ValidateName on save { create; update; field FirstName, LastName; }
       validation ValidateDeliveryDate on save { create; update; field DeliveryDate; }
-      //  validation ValidateCountry on save { create; update; field Country; }
-      // validation ValidateOrderStatus on save { create; update; field OrderStatus; }
 
       determine action ValidateMail { validation ValidateEmail; }
       determine action ValidateNames { validation ValidateName; }
       determine action ValidateDeliveryDates { validation ValidateDeliveryDate; }
-      //  determine action ValidateCountrys { validation ValidateCountry; }
-      // determine action ValidateOrderStatuss { validation ValidateOrderStatus; }
 
       side effects
       {
@@ -48,8 +44,7 @@
         determine action ValidateMail executed on field Email affects messages;
         determine action ValidateNames executed on field FirstName, field LastName affects messages;
         determine action ValidateDeliveryDates executed on field DeliveryDate affects messages;
-        //     determine action ValidateCountrys executed on field Country affects messages;
-        //  determine action ValidateOrderStatuss executed on field OrderStatus affects messages;
+
       }
 
       draft action Activate optimized;
@@ -62,8 +57,6 @@
         validation ValidateEmail;
         validation ValidateName;
         validation ValidateDeliveryDate;
-        //    validation ValidateCountry;
-        //  validation ValidateOrderStatus;
         validation Item~ValidatePrice;
         validation Item~validateCurrency;
         validation Item~ValidateQuantity;
@@ -106,26 +99,30 @@
 
       field ( readonly, numbering : managed ) ItemUUID;
       field ( readonly ) HeaderUUID, LocalCreatedBy, LocalCreatedAt, LocalLastChangedBy, LocalLastChangedAt, LastChangedAt, ItemID;
-      field ( mandatory ) Name, Description, Price, Currency, Quantity, ReleaseDate, DiscontinueDate, UnitOfMeasure;
+      field ( mandatory ) Price, Currency, Quantity, name;
 
       determination SetItemID on save { create; field ItemId; }
       determination SetDiscontinueDate on save { create; field DiscontinueDate; }
+      determination SetReleaseDate on save { create; field ReleaseDate; }
 
       action ( features : instance, authorization : update ) Discount parameter ZCDS_AE_Discount_0098 result [1] $self;
 
       validation ValidatePrice on save { create; update; field Price; }
       validation validateCurrency on save { create; update; field Currency; }
       validation ValidateQuantity on save { create; update; field Quantity; }
+      validation ValidateName on save { create; update; field Name; }
 
       determine action ValidatePrices { validation ValidatePrice; }
       determine action ValidateQuantitys { validation ValidateQuantity; }
       determine action ValidateCurrencys { validation validateCurrency; }
+      determine action ValidateNames { validation ValidateName; }
 
       side effects
       {
         determine action ValidatePrices executed on field Price affects messages;
         determine action ValidateQuantitys executed on field Quantity affects messages;
         determine action ValidateCurrencys executed on field Currency affects messages;
+        determine action ValidateNames executed on field Name affects messages;
       }
 
       mapping for zitem_0098

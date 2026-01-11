@@ -65,6 +65,15 @@ CLASS zcm_sale_order_0098 DEFINITION
                  attr4 TYPE scx_attrname VALUE '',
                END OF not_authorized.
 
+    CONSTANTS: BEGIN OF wrong_price,
+                 msgid TYPE symsgid      VALUE 'ZCM_SALE_ORDER_0098',
+                 msgno TYPE symsgno      VALUE '007',
+                 attr1 TYPE scx_attrname VALUE '',
+                 attr2 TYPE scx_attrname VALUE '',
+                 attr3 TYPE scx_attrname VALUE '',
+                 attr4 TYPE scx_attrname VALUE '',
+               END OF wrong_price.
+
     METHODS constructor
       IMPORTING textid        LIKE if_t100_message=>t100key         OPTIONAL
                 !previous     LIKE previous                         OPTIONAL
@@ -76,6 +85,7 @@ CLASS zcm_sale_order_0098 DEFINITION
                 delivery_date TYPE zde_delivery_date_0098           OPTIONAL
                 first_name    TYPE zde_email_0098                   OPTIONAL
                 last_name     TYPE zde_first_name_0098              OPTIONAL
+                price         TYPE zde_price_0098                   OPTIONAL
                 email         TYPE zde_last_name_0098               OPTIONAL.
 
     DATA mv_attr1         TYPE string.
@@ -86,12 +96,12 @@ CLASS zcm_sale_order_0098 DEFINITION
     DATA mv_email         TYPE zde_email_0098.
     DATA mv_first_name    TYPE zde_first_name_0098.
     DATA mv_last_name     TYPE zde_last_name_0098.
+    DATA mv_price         TYPE zde_price_0098.
 
   PROTECTED SECTION.
 
   PRIVATE SECTION.
 ENDCLASS.
-
 
 
 CLASS zcm_sale_order_0098 IMPLEMENTATION.
@@ -106,6 +116,7 @@ CLASS zcm_sale_order_0098 IMPLEMENTATION.
     mv_email         = email.
     mv_first_name    = first_name.
     mv_last_name     = last_name.
+    mv_price         = price.
 
     if_abap_behv_message~m_severity = severity.
 

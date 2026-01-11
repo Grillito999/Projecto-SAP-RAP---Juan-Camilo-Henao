@@ -28,11 +28,6 @@ annotate entity ZCDS_C_HEADER_0098 with
   @UI.selectionField: [ { position: 10 } ]
   HeaderId;
 
-  //  @UI.identification: [ { position: 20, label: 'Item ID' } ]
-  //  @UI.lineItem: [ { position: 20, importance: #HIGH, label: 'Item ID' } ]
-  //  @UI.selectionField: [ { position: 20 } ]
-  //  ItemId;
-
   @UI.identification: [ { position: 30, label: 'Email' } ]
   @UI.lineItem: [ { position: 30, importance: #MEDIUM, label: 'Email' } ]
   @UI.selectionField: [ { position: 30 } ]
@@ -61,19 +56,21 @@ annotate entity ZCDS_C_HEADER_0098 with
   @UI.selectionField: [ { position: 60 } ]
   DeliveryDate;
 
+  @UI.lineItem: [ { hidden: true } ]
+  @UI.selectionField: [ { position: 70 } ]
+  OrderStatus;
+
   @UI.identification: [ { position: 90, label: 'Status Order' } ]
   @UI.lineItem: [ { position: 90,
                     importance: #HIGH,
                     label: 'Status Order',
                     criticality: 'OrderStatus',
                     criticalityRepresentation: #WITH_ICON } ]
-  @UI.selectionField: [ { position: 70 } ]
-  OrderStatus;
+  @UI.selectionField: [ { exclude: true } ]
+  DescriptionStatus;
 
   @UI.identification: [ { position: 100, label: 'Image Url' } ]
   @UI.lineItem: [ { position: 100, importance: #LOW, label: 'Image Url' } ]
   ImageUrl;
 
-  @UI.hidden: true
-  DescriptionStatus;
 }
