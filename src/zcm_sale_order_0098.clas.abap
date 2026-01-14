@@ -14,7 +14,7 @@ CLASS zcm_sale_order_0098 DEFINITION
     CONSTANTS: BEGIN OF enter_delivery_date,
                  msgid TYPE symsgid      VALUE 'ZCM_SALE_ORDER_0098',
                  msgno TYPE symsgno      VALUE '001',
-                 attr1 TYPE scx_attrname VALUE 'mv_delivery_date',
+                 attr1 TYPE scx_attrname VALUE 'MV_DELIVERY_DATE',
                  attr2 TYPE scx_attrname VALUE '',
                  attr3 TYPE scx_attrname VALUE '',
                  attr4 TYPE scx_attrname VALUE '',
@@ -23,7 +23,7 @@ CLASS zcm_sale_order_0098 DEFINITION
     CONSTANTS: BEGIN OF invalid_date,
                  msgid TYPE symsgid      VALUE 'ZCM_SALE_ORDER_0098',
                  msgno TYPE symsgno      VALUE '002',
-                 attr1 TYPE scx_attrname VALUE 'mv_delivery_date',
+                 attr1 TYPE scx_attrname VALUE 'MV_DELIVERY_DATE',
                  attr2 TYPE scx_attrname VALUE '',
                  attr3 TYPE scx_attrname VALUE '',
                  attr4 TYPE scx_attrname VALUE '',
@@ -32,7 +32,7 @@ CLASS zcm_sale_order_0098 DEFINITION
     CONSTANTS: BEGIN OF invalid_email,
                  msgid TYPE symsgid      VALUE 'ZCM_SALE_ORDER_0098',
                  msgno TYPE symsgno      VALUE '003',
-                 attr1 TYPE scx_attrname VALUE 'mv_email',
+                 attr1 TYPE scx_attrname VALUE 'MV_EMAIL',
                  attr2 TYPE scx_attrname VALUE '',
                  attr3 TYPE scx_attrname VALUE '',
                  attr4 TYPE scx_attrname VALUE '',
@@ -41,7 +41,7 @@ CLASS zcm_sale_order_0098 DEFINITION
     CONSTANTS: BEGIN OF invalid_first_name,
                  msgid TYPE symsgid      VALUE 'ZCM_SALE_ORDER_0098',
                  msgno TYPE symsgno      VALUE '004',
-                 attr1 TYPE scx_attrname VALUE 'mv_first_name',
+                 attr1 TYPE scx_attrname VALUE 'MV_FIRST_NAME',
                  attr2 TYPE scx_attrname VALUE '',
                  attr3 TYPE scx_attrname VALUE '',
                  attr4 TYPE scx_attrname VALUE '',
@@ -50,7 +50,7 @@ CLASS zcm_sale_order_0098 DEFINITION
     CONSTANTS: BEGIN OF invalid_last_name,
                  msgid TYPE symsgid      VALUE 'ZCM_SALE_ORDER_0098',
                  msgno TYPE symsgno      VALUE '005',
-                 attr1 TYPE scx_attrname VALUE 'mv_last_name',
+                 attr1 TYPE scx_attrname VALUE 'MV_LAST_NAME',
                  attr2 TYPE scx_attrname VALUE '',
                  attr3 TYPE scx_attrname VALUE '',
                  attr4 TYPE scx_attrname VALUE '',
@@ -68,11 +68,47 @@ CLASS zcm_sale_order_0098 DEFINITION
     CONSTANTS: BEGIN OF wrong_price,
                  msgid TYPE symsgid      VALUE 'ZCM_SALE_ORDER_0098',
                  msgno TYPE symsgno      VALUE '007',
-                 attr1 TYPE scx_attrname VALUE '',
+                 attr1 TYPE scx_attrname VALUE 'MV_PRICE',
                  attr2 TYPE scx_attrname VALUE '',
                  attr3 TYPE scx_attrname VALUE '',
                  attr4 TYPE scx_attrname VALUE '',
                END OF wrong_price.
+
+    CONSTANTS: BEGIN OF wrong_quantity,
+                 msgid TYPE symsgid      VALUE 'ZCM_SALE_ORDER_0098',
+                 msgno TYPE symsgno      VALUE '008',
+                 attr1 TYPE scx_attrname VALUE 'MV_QUANTITY',
+                 attr2 TYPE scx_attrname VALUE '',
+                 attr3 TYPE scx_attrname VALUE '',
+                 attr4 TYPE scx_attrname VALUE '',
+               END OF wrong_quantity.
+
+    CONSTANTS: BEGIN OF wrong_currency,
+                 msgid TYPE symsgid      VALUE 'ZCM_SALE_ORDER_0098',
+                 msgno TYPE symsgno      VALUE '009',
+                 attr1 TYPE scx_attrname VALUE 'MV_CURRENCY',
+                 attr2 TYPE scx_attrname VALUE '',
+                 attr3 TYPE scx_attrname VALUE '',
+                 attr4 TYPE scx_attrname VALUE '',
+               END OF wrong_currency.
+
+    CONSTANTS: BEGIN OF invalid_item_name,
+                 msgid TYPE symsgid      VALUE 'ZCM_SALE_ORDER_0098',
+                 msgno TYPE symsgno      VALUE '010',
+                 attr1 TYPE scx_attrname VALUE 'MV_ITEM_NAME',
+                 attr2 TYPE scx_attrname VALUE '',
+                 attr3 TYPE scx_attrname VALUE '',
+                 attr4 TYPE scx_attrname VALUE '',
+               END OF invalid_item_name.
+
+    CONSTANTS: BEGIN OF invalid_discount,
+                 msgid TYPE symsgid      VALUE 'ZCM_SALE_ORDER_0098',
+                 msgno TYPE symsgno      VALUE '011',
+                 attr1 TYPE scx_attrname VALUE 'MV_DISCOUNT',
+                 attr2 TYPE scx_attrname VALUE '',
+                 attr3 TYPE scx_attrname VALUE '',
+                 attr4 TYPE scx_attrname VALUE '',
+               END OF invalid_discount.
 
     METHODS constructor
       IMPORTING textid        LIKE if_t100_message=>t100key         OPTIONAL
@@ -86,7 +122,11 @@ CLASS zcm_sale_order_0098 DEFINITION
                 first_name    TYPE zde_email_0098                   OPTIONAL
                 last_name     TYPE zde_first_name_0098              OPTIONAL
                 price         TYPE zde_price_0098                   OPTIONAL
-                email         TYPE zde_last_name_0098               OPTIONAL.
+                email         TYPE zde_last_name_0098               OPTIONAL
+                currency      TYPE zde_quantity_0098                OPTIONAL
+                quantity      TYPE zde_quantity_0098                OPTIONAL
+                item_name     TYPE zde_name_0098                    OPTIONAL
+                discount      TYPE zde_price_0098                   OPTIONAL.
 
     DATA mv_attr1         TYPE string.
     DATA mv_attr2         TYPE string.
@@ -97,6 +137,10 @@ CLASS zcm_sale_order_0098 DEFINITION
     DATA mv_first_name    TYPE zde_first_name_0098.
     DATA mv_last_name     TYPE zde_last_name_0098.
     DATA mv_price         TYPE zde_price_0098.
+    DATA mv_quantity      TYPE zde_quantity_0098.
+    DATA mv_currency      TYPE zde_currency_0098.
+    DATA mv_item_name     TYPE zde_name_0098.
+    DATA mv_discount      TYPE zde_price_0098.
 
   PROTECTED SECTION.
 
@@ -117,6 +161,10 @@ CLASS zcm_sale_order_0098 IMPLEMENTATION.
     mv_first_name    = first_name.
     mv_last_name     = last_name.
     mv_price         = price.
+    mv_quantity      = quantity.
+    mv_quantity      = currency.
+    mv_item_name     = item_name.
+    mv_discount      = discount.
 
     if_abap_behv_message~m_severity = severity.
 

@@ -63,10 +63,10 @@ annotate entity ZCDS_C_ITEM_0098 with
   @UI.identification: [ { position: 110, label: 'Quantity' } ]
   @UI.lineItem: [ { position: 110, importance: #HIGH, label: 'Quantity' } ]
   Quantity;
+
   @UI.hidden: true
-  @UI.identification: [ { position: 120, label: 'Unit Of Measure' } ]
-  @UI.lineItem: [ { position: 120, importance: #HIGH, label: 'Unit Of Measure' } ]
   UnitOfMeasure;
+
   @UI.identification: [ { position: 120, label: 'Unit Of Measure' } ]
   @UI.lineItem: [ { position: 120, importance: #HIGH, label: 'Unit Of Measure' } ]
   UnitOfMeasureLongName;

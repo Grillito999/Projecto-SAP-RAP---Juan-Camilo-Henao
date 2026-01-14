@@ -66,7 +66,7 @@ annotate entity ZCDS_C_HEADER_0098 with
                     label: 'Status Order',
                     criticality: 'OrderStatus',
                     criticalityRepresentation: #WITH_ICON } ]
-  @UI.selectionField: [ { exclude: true } ]
+  @UI.selectionField: [ { exclude: true  } ]
   DescriptionStatus;
 
   @UI.identification: [ { position: 100, label: 'Image Url' } ]

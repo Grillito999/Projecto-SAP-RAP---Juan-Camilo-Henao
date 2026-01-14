@@ -99,7 +99,7 @@ CLASS lhc_Header IMPLEMENTATION.
     LOOP AT Headers ASSIGNING FIELD-SYMBOL(<fs_header>).
 
       IF line_exists( Header[ HeaderUUID = <fs_header>-HeaderUUID
-                              HeaderId   = <fs_header>-HeaderId ] ) AND lv_technical_name = 'CB9980002241'. "" AND <fs_header>-HeaderId = C_header.
+                              HeaderId   = <fs_header>-HeaderId ] ) AND lv_technical_name = 'CB9980002241' AND <fs_header>-HeaderId = C_header.
 
         IF requested_authorizations-%update = if_abap_behv=>mk-on OR requested_authorizations-%action-Edit = if_abap_behv=>mk-on AND requested_authorizations-%delete = if_abap_behv=>mk-on.
 
@@ -194,7 +194,7 @@ CLASS lhc_Header IMPLEMENTATION.
 
       ELSE.
 
-        result-%delete = if_abap_behv=>auth-unauthorized.
+        result-%delete = if_abap_behv=>auth-allowed.
 
         APPEND VALUE #( %msg    = NEW zcm_sale_order_0098( textid   = zcm_sale_order_0098=>not_authorized
                                                            severity = if_abap_behv_message=>severity-error )
@@ -430,7 +430,7 @@ CLASS lhc_Header IMPLEMENTATION.
         APPEND VALUE #( %tky = <fs_order>-%tky ) TO failed-header. " FAILED es para que SAP identifique el error, unicamente se le pasa la llave "
         APPEND VALUE #(
             %tky               = <fs_order>-%tky
-            %state_area        = 'VALIDATE_EMAIL'
+            %state_area        = 'VALIDATE_NAME'
             %element-FirstName = if_abap_behv=>mk-on
             %msg               = NEW zcm_sale_order_0098( textid   = zcm_sale_order_0098=>invalid_first_name
                                                           severity = if_abap_behv_message=>severity-error ) ) TO reported-header. " REPORTED es para que el USUARIO vea el error, tiene distintos parametros.
@@ -439,7 +439,7 @@ CLASS lhc_Header IMPLEMENTATION.
 
         APPEND VALUE #( %tky = <fs_order>-%tky ) TO failed-header. " FAILED es para que SAP identifique el error, unicamente se le pasa la llave "
         APPEND VALUE #( %tky              = <fs_order>-%tky
-                        %state_area       = 'VALIDATE_EMAIL'
+                        %state_area       = 'VALIDATE_NAME'
                         %element-LastName = if_abap_behv=>mk-on
                         %msg              = NEW zcm_sale_order_0098( textid   = zcm_sale_order_0098=>invalid_last_name
                                                                      severity = if_abap_behv_message=>severity-error ) ) TO reported-header. " REPORTED es para que el USUARIO vea el error, tiene distintos parametros.
