@@ -304,6 +304,12 @@ CLASS lhc_Item IMPLEMENTATION.
     DATA price_discount TYPE zde_price_0098.
     DATA percentage     TYPE zde_price_0098.
 
+    READ ENTITIES OF zcds_r_header_0098 IN LOCAL MODE
+         ENTITY Item
+         FIELDS ( Price ) WITH
+         CORRESPONDING #( keys )
+         RESULT DATA(prices).
+
     LOOP AT keys ASSIGNING FIELD-SYMBOL(<fs_key>).
 
       IF <fs_key>-%param-Discount_percent <= 0 OR <fs_key>-%param-Discount_percent > 100.
@@ -318,12 +324,6 @@ CLASS lhc_Item IMPLEMENTATION.
 
       ELSE.
 
-        READ ENTITIES OF zcds_r_header_0098 IN LOCAL MODE
-         ENTITY Item
-         FIELDS ( Price ) WITH
-         CORRESPONDING #( keys )
-         RESULT DATA(prices).
-
         IF prices IS NOT INITIAL.
 
           percentage = keys[ KEY id %tky = <fs_key>-%tky ]-%param-Discount_percent.
@@ -334,11 +334,6 @@ CLASS lhc_Item IMPLEMENTATION.
 
           APPEND VALUE #( %tky = <fs_key>-%tky
                           price = price_discount ) TO discounts.
-
-          MODIFY ENTITIES OF zcds_r_header_0098 IN LOCAL MODE
-             ENTITY Item
-             UPDATE FIELDS ( Price )
-             WITH discounts.
 
           CONTINUE.
 
@@ -357,6 +352,11 @@ CLASS lhc_Item IMPLEMENTATION.
       ENDIF.
 
     ENDLOOP.
+
+    MODIFY ENTITIES OF zcds_r_header_0098 IN LOCAL MODE
+             ENTITY Item
+             UPDATE FIELDS ( Price )
+             WITH discounts.
 
 
 
