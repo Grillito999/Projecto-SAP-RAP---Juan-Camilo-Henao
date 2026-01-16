@@ -99,7 +99,7 @@ CLASS lhc_Header IMPLEMENTATION.
     LOOP AT Headers ASSIGNING FIELD-SYMBOL(<fs_header>).
 
       IF line_exists( Header[ HeaderUUID = <fs_header>-HeaderUUID
-                              HeaderId   = <fs_header>-HeaderId ] ) AND lv_technical_name = 'CB9980002241' AND <fs_header>-HeaderId = C_header.
+                              HeaderId   = <fs_header>-HeaderId ] ) AND lv_technical_name = 'CB9980002241' AND <fs_header>-HeaderId <> C_header.
 
         IF requested_authorizations-%update = if_abap_behv=>mk-on OR requested_authorizations-%action-Edit = if_abap_behv=>mk-on AND requested_authorizations-%delete = if_abap_behv=>mk-on.
 
@@ -186,7 +186,7 @@ CLASS lhc_Header IMPLEMENTATION.
 
       IF lv_technical_name = 'CB9980002241'.
 
-        result-%delete = if_abap_behv=>auth-allowed.
+        result-%delete = if_abap_behv=>auth-unauthorized.
 
         APPEND VALUE #( %msg    = NEW zcm_sale_order_0098( textid   = zcm_sale_order_0098=>not_authorized
                                                            severity = if_abap_behv_message=>severity-error )
@@ -194,7 +194,7 @@ CLASS lhc_Header IMPLEMENTATION.
 
       ELSE.
 
-        result-%delete = if_abap_behv=>auth-allowed.
+        result-%delete = if_abap_behv=>auth-unauthorized.
 
         APPEND VALUE #( %msg    = NEW zcm_sale_order_0098( textid   = zcm_sale_order_0098=>not_authorized
                                                            severity = if_abap_behv_message=>severity-error )
