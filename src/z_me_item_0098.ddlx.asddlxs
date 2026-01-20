@@ -39,6 +39,10 @@ annotate entity ZCDS_C_ITEM_0098 with
   @UI.selectionField: [ { position: 40 } ]
   Price;
 
+  @UI.identification: [ { position: 61, label: 'IVA Included' } ]
+  @UI.lineItem: [ { position: 61, importance: #HIGH, label: 'IVA Included' } ]
+  PriceWithIVA;
+
   @UI.hidden: true
   @UI.identification: [ { position: 70, label: 'Currency' } ]
   @UI.lineItem: [ { position: 70, importance: #HIGH, label: 'Currency' } ]
